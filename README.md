@@ -16,6 +16,12 @@ Areas of Expertise
 * FinOps & Cloud Cost Optimization
 * Linux Administration
 * Cloud Security & Governance
+* Ansible & Automation
+* Skills Configuration Management
+* Attention to details & Team Collaboration
+* Logging & Monitoring
+
+
 
 Resume
 
