@@ -1,0 +1,1 @@
+console.log("Kelvin Fon resume portfolio loaded successfully.");
