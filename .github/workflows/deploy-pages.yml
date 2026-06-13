@@ -12,25 +12,46 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: github-pages-deploy
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    name: Deploy Static Site
+    runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
 
-    runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
+
+      - name: Setup Node.js 22 LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Verify Node.js Version
+        run: |
+          node --version
+          npm --version
+
+      - name: Validate Required Site Files
+        run: |
+          test -f index.html
+          test -f experience.html
+          test -f projects.html
+          test -f certifications.html
+          test -f css/style.css
+          test -f js/main.js
+          test -f assets/Kelvin-Fon-Resume.docx
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload static site files
+      - name: Upload Static Site Artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
