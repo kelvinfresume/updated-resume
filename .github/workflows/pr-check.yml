@@ -1,0 +1,28 @@
+name: Pull Request Validation
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate HTML Files Exist
+        run: |
+          test -f index.html
+          test -f experience.html
+          test -f projects.html
+          test -f certifications.html
+
+      - name: Validate CSS Exists
+        run: |
+          test -f css/style.css
+
+      - name: Validate JS Exists
+        run: |
+          test -f js/main.js
