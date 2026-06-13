@@ -44,6 +44,7 @@ jobs:
           test -f experience.html
           test -f projects.html
           test -f certifications.html
+          test -f 404.html
           test -f css/style.css
           test -f js/main.js
           test -f assets/Kelvin-Fon-Resume.docx
